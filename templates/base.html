@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Performance Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ request.endpoint }}">
+    <header class="topbar">
+        <div class="container header-center">
+            <nav>
+                <a href="{{ url_for('home') }}">Inicio</a>
+                <a href="{{ url_for('index') }}">Resumen</a>
+                <a href="{{ url_for('trades') }}">Trades</a>
+                <a href="{{ url_for('performance') }}">Estadísticas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

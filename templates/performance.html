@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Estadísticas</h2>
+
+<h3>Win Rate por par operado</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Par</th>
+            <th>Trades</th>
+            <th>Ganadores</th>
+            <th>Win Rate</th>
+            <th>Total R</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in pair_winrates %}
+        <tr>
+            <td>{{ item.pair }}</td>
+            <td>{{ item.trades }}</td>
+            <td>{{ item.wins }}</td>
+            <td>{{ item.winrate }}%</td>
+            <td>{{ item.total_r }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Performance por setup</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Setup</th>
+            <th>Trades</th>
+            <th>Total R</th>
+            <th>Media R</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in by_setup %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.count }}</td>
+            <td>{{ item.total_r }}</td>
+            <td>{{ item.avg_r }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

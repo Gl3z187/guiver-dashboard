@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="home-landing">
+    <div class="home-logo-box">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Guiver Asset Management" class="home-logo">
+    </div>
+
+    <div class="home-actions">
+        <a class="home-btn" href="{{ url_for('index') }}">Resumen</a>
+        <a class="home-btn" href="{{ url_for('trades') }}">Trades</a>
+        <a class="home-btn" href="{{ url_for('performance') }}">Estadísticas</a>
+    </div>
+</section>
+{% endblock %}

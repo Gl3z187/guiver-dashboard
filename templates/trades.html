@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Registro de trades</h2>
+
+<div class="form-box">
+    <form method="POST">
+        <div class="grid">
+            <input type="date" name="open_date" required>
+            <input type="text" name="close_date" placeholder="Fecha cierre (opcional)">
+            <input type="text" name="pair" placeholder="Par" required>
+            <select name="direction">
+                <option>Long</option>
+                <option>Short</option>
+            </select>
+            <input type="text" name="narrative" placeholder="Narrativa" required>
+            <input type="text" name="setup_type" placeholder="Tipo de setup" required>
+            <input type="number" step="0.01" name="result_r" placeholder="Resultado R" required>
+        </div>
+
+        <textarea name="notes" placeholder="Notas"></textarea>
+        <textarea name="reflection" placeholder="Reflexión del trade: qué hiciste bien, qué hiciste mal, qué repetirías o evitarías"></textarea>
+        <button type="submit">Guardar trade</button>
+    </form>
+</div>
+
+<h2>Listado</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Par</th>
+            <th>Dirección</th>
+            <th>Narrativa</th>
+            <th>Setup</th>
+            <th>R</th>
+            <th>Reflexión</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trade in trades %}
+        <tr>
+            <td>{{ trade.id }}</td>
+            <td>{{ trade.open_date }}</td>
+            <td>{{ trade.pair }}</td>
+            <td>{{ trade.direction }}</td>
+            <td>{{ trade.narrative }}</td>
+            <td>{{ trade.setup_type }}</td>
+            <td>{{ trade.result_r }}</td>
+            <td class="reflection-cell">{{ trade.reflection }}</td>
+            <td><a class="delete-btn" href="{{ url_for('delete', trade_id=trade.id) }}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
