@@ -1,15 +1,60 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="home-landing">
-    <div class="home-logo-box">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Guiver Asset Management" class="home-logo">
+<section class="hero-section" id="top">
+    <div class="hero-bg hero-bg-left"></div>
+    <div class="hero-bg hero-bg-right"></div>
+
+    <div class="hero-content">
+
+        <h1 class="hero-title">Guiver Asset Management</h1>
+
+        <p class="hero-kicker">Research-Driven Global Macro</p>
+
+        <p class="hero-description">
+            Equipo de traders macro especializados en macroeconomía, geopolítica y liquidez global,
+            enfocados en comprender los flujos de capital que impulsan los mercados y en aplicar ese
+            conocimiento en la gestión de capital propio y de terceros.
+        </p>
+
+        <div class="hero-actions">
+            <a class="glass-btn" href="{{ url_for('index') }}">Sigue nuestro trackrecord</a>
+            <a class="glass-btn" href="#enfoque">Conócenos mejor</a>
+        </div>
+    </div>
+</section>
+
+<section class="focus-section" id="enfoque">
+    <div class="section-title-wrap">
+        <h2 class="section-title">Nuestro enfoque</h2>
     </div>
 
-    <div class="home-actions">
-        <a class="home-btn" href="{{ url_for('index') }}">Resumen</a>
-        <a class="home-btn" href="{{ url_for('trades') }}">Trades</a>
-        <a class="home-btn" href="{{ url_for('performance') }}">Estadísticas</a>
+    <div class="focus-grid">
+        <a class="focus-card focus-card-blue focus-link-card" href="{{ url_for('geopolitico') }}">
+            <h3>Análisis geopolítico</h3>
+            <p>
+                Entendemos el sentimiento global y evaluamos cómo los acontecimientos geopolíticos
+                pueden alterar el equilibrio económico. En función del escenario que se desarrolla,
+                adaptamos nuestro posicionamiento en los mercados.
+            </p>
+        </a>
+
+        <a class="focus-card focus-card-purple focus-link-card" href="{{ url_for('macroeconomico') }}">
+            <h3>Análisis macroeconómico</h3>
+            <p>
+                Analizamos los ciclos económicos, la inflación y las decisiones de política monetaria
+                para comprender la dirección de las principales economías y su impacto en los mercados
+                financieros.
+            </p>
+        </a>
+
+        <a class="focus-card focus-card-orange focus-link-card" href="{{ url_for('liquidez') }}">
+            <h3>Análisis de liquidez bancaria</h3>
+            <p>
+                Estudiamos la liquidez del sistema financiero y cómo se mueve el capital a través de
+                bancos centrales, mercados y grandes instituciones.
+            </p>
+        </a>
     </div>
 </section>
 {% endblock %}

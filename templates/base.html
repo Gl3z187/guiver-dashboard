@@ -2,23 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Performance Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guiver Asset Management</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="{{ request.endpoint }}">
-    <header class="topbar">
-        <div class="container header-center">
-            <nav>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="nav-logo">
+                <a href="{{ url_for('home') }}">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Guiver Asset Management">
+                </a>
+            </div>
+
+            <nav class="main-nav">
                 <a href="{{ url_for('home') }}">Inicio</a>
                 <a href="{{ url_for('index') }}">Resumen</a>
                 <a href="{{ url_for('trades') }}">Trades</a>
-                <a href="{{ url_for('performance') }}">Estadísticas</a>
+                <a href="{{ url_for('contact') }}" class="contact-btn">Contacto</a>
+                {% if session.get('authenticated') %}
+                    <a href="{{ url_for('logout') }}">Salir</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Acceso</a>
+                {% endif %}
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
 </body>
 </html>

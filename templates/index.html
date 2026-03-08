@@ -1,74 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Resumen general</h2>
+<main>
+    <h2>Resumen general</h2>
 
-<div class="cards">
-    <div class="card">
-        <h3>Trades</h3>
-        <p>{{ summary.num_trades }}</p>
-    </div>
-    <div class="card">
-        <h3>Total R</h3>
-        <p>{{ summary.total_r }}</p>
-    </div>
-    <div class="card">
-        <h3>Win Rate</h3>
-        <p>{{ summary.win_rate }}%</p>
-    </div>
-    <div class="card">
-        <h3>Profit Factor</h3>
-        <p>{{ summary.profit_factor }}</p>
-    </div>
-</div>
+    <section class="cards">
+        <div class="card">
+            <h3>Trades</h3>
+            <p>{{ summary.num_trades }}</p>
+        </div>
 
-<div class="circle-panel">
-    <div class="circle-card">
-        <h3>Win Rate</h3>
-        <div class="circle-wrap">
-            <div class="progress-circle" style="--value: {{ summary.win_rate }};">
-                <div class="circle-inner">
-                    <span>{{ summary.win_rate }}%</span>
+        <div class="card">
+            <h3>Total R</h3>
+            <p>{{ summary.total_r }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Win Rate</h3>
+            <p>{{ summary.win_rate }}%</p>
+        </div>
+
+        <div class="card">
+            <h3>Profit Factor</h3>
+            <p>{{ summary.profit_factor }}</p>
+        </div>
+    </section>
+
+    <section class="circle-panel">
+        <div class="circle-card">
+            <h3>Win Rate</h3>
+
+            <div class="circle-wrap">
+                <div class="progress-circle" style="--value: {{ summary.win_rate }};">
+                    <div class="circle-inner">
+                        {{ summary.win_rate }}%
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="card stat-card">
-        <h3>Media ganadora</h3>
-        <p>{{ summary.avg_win }} R</p>
-    </div>
+        <div class="card">
+            <h3>Media ganadora</h3>
+            <p>{{ summary.avg_win }} R</p>
+        </div>
 
-    <div class="card stat-card">
-        <h3>Media perdedora</h3>
-        <p>{{ summary.avg_loss }} R</p>
-    </div>
-</div>
+        <div class="card">
+            <h3>Media perdedora</h3>
+            <p>{{ summary.avg_loss }} R</p>
+        </div>
+    </section>
 
-<h2>Últimos trades</h2>
+    <h2>Últimos trades</h2>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Fecha</th>
-            <th>Par</th>
-            <th>Dirección</th>
-            <th>Setup</th>
-            <th>R</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for trade in trades %}
-        <tr>
-            <td>{{ trade.id }}</td>
-            <td>{{ trade.open_date }}</td>
-            <td>{{ trade.pair }}</td>
-            <td>{{ trade.direction }}</td>
-            <td>{{ trade.setup_type }}</td>
-            <td>{{ trade.result_r }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Par</th>
+                <th>Dirección</th>
+                <th>Setup</th>
+                <th>R</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trade in trades %}
+            <tr>
+                <td>{{ trade.id }}</td>
+                <td>{{ trade.open_date }}</td>
+                <td>{{ trade.pair }}</td>
+                <td>{{ trade.direction }}</td>
+                <td>{{ trade.setup_type }}</td>
+                <td>{{ trade.result_r }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
 {% endblock %}

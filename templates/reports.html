@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="reports-page">
+    <h2>{{ title }}</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-box">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if session.get('authenticated') %}
+    <section class="form-box">
+        <form method="POST" enctype="multipart/form-data" class="pdf-upload-form">
+            <input type="file" name="pdf_file" accept=".pdf" required>
+            <button type="submit">Subir PDF</button>
+        </form>
+    </section>
+    {% endif %}
+
+    <section class="reports-grid">
+        {% for report in reports %}
+        <a class="report-card" href="{{ url_for('uploaded_file', folder=folder, filename=report) }}" target="_blank">
+            <div class="report-card-inner">
+                <h3>{{ report }}</h3>
+                <p>Ver reporte PDF</p>
+            </div>
+        </a>
+        {% else %}
+        <p class="no-reports">Todavía no hay reportes subidos en esta sección.</p>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

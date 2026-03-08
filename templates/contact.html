@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="contact-page">
+    <div class="contact-wrapper">
+
+        <div class="contact-left">
+            <p class="contact-eyebrow">CONTACTO</p>
+            <h1 class="contact-title">Envíanos un mensaje</h1>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-box">
+                        {% for category, message in messages %}
+                            <div class="flash-message {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form class="contact-form" method="POST">
+                <div class="contact-row">
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="text" name="telefono" placeholder="Teléfono">
+                </div>
+
+                <input type="email" name="email" placeholder="Email" required>
+
+                <select name="asunto" required>
+                    <option value="Consultoría en análisis de mercado y desarrollo de estrategia de inversión">
+                        Consultoría en análisis de mercado y desarrollo de estrategia de inversión
+                    </option>
+                    <option value="Track record y gestión de capital">
+                        Track record y gestión de capital
+                    </option>
+                    <option value="Colaboraciones y alianzas">
+                        Colaboraciones y alianzas
+                    </option>
+                    <option value="Otro">
+                        Otro
+                    </option>
+                </select>
+
+                <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+
+                <label class="privacy-check">
+                    <input type="checkbox" name="privacidad" required>
+                    <span>Acepto la política de privacidad.</span>
+                </label>
+
+                <button type="submit" class="contact-submit">Enviar</button>
+            </form>
+        </div>
+
+        <div class="contact-right">
+            <div class="contact-info-card">
+
+                <div class="contact-info-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h3>Dirección</h3>
+                        <p>Torre Europa, Paseo de la Castellana 95, Piso 29, Madrid, 28046</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h3>Teléfono</h3>
+                        <p>+34 675 682 493</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>guiverassetmanagement@gmail.com</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
